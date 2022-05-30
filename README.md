@@ -34,7 +34,13 @@ rpm -i nginx-1.14.1-1.el7_4.ngx.src.rpm
 
 В папке SPECS лежит spec-файл. Файл, который описывает что и как собирать.
 
-Открываем файл nano SPECS/nginx.spec и добавляем в секцию %build необходимый нам модуль OpenSSL:
+Открываем файл 
+
+```
+vi SPECS/nginx.spec 
+
+```
+и добавляем в секцию %build необходимый нам модуль OpenSSL:
 
 ```
 %build
@@ -65,8 +71,10 @@ rpmbuild -bb SPECS/nginx.spec
 ```
 Устанавливаем rpm пакет: 
 
+```
 yum localinstall -y RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm
 
+```
 Запускаем nginx - 
 
 ```
@@ -75,7 +83,7 @@ systemctl start nginx
 ```
 и можем посмотреть с какими параметрами nginx был скомпилирован nginx -V
 Также стоит отметить, что nginx можно собрать через 
-./configure && make && make install. Ссылка на мануал.
+./configure && make && make install.
 
 Создаем свой репозиторий
 Создаем папку в / нашего nginx - 
@@ -84,7 +92,12 @@ systemctl start nginx
 mkdir /usr/share/nginx/html/repo
 
 ```
-Копируем наш скомпилированный пакет nginx в папку с будущим репозиторием - cp rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm /usr/share/nginx/html/repo/
+Копируем наш скомпилированный пакет nginx в папку с будущим репозиторием -
+
+```
+cp rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm /usr/share/nginx/html/repo/
+
+```
 Скачиваем дополнительно пакет - 
 
 ```
@@ -139,6 +152,12 @@ percona-release.noarch                      0.1-6                      otus
 
 ```
 yum list | grep otus
-percona-release.noarch                      0.1-6                      @otus
-Важно: в случае когда мы удаляем или добавляем пакеты в наш репозиторий, нам необходимо выполнить createrepo <наш репозиторий> и createrepo --update <наш репозиторий>, после чего на всякий случай можем выполнить yum clean all и теперь yum list --showduplicates | grep otus
+percona-release.noarch                      0.1-6                      @otus hi
+
+```
+
+в случае когда мы удаляем или добавляем пакеты в наш репозиторий, нам необходимо выполнить createrepo <наш репозиторий> и createrepo --update <наш репозиторий> 
+
+```
+yum clean all и теперь yum list --showduplicates | grep otus
 ```
