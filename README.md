@@ -15,7 +15,9 @@
 yum install -y redhat-lsb-core wget rpmdevtools rpm-build createrepo yum-utils openssl-devel zlib-devel pcre-devel gcc
 
 Скачиваем src.rpm - wget https://nginx.org/packages/centos/7/SRPMS/nginx-1.14.1-1.el7_4.ngx.src.rpm
-При использовании этой команды с параметром -i, распаковываются src и spec файл: rpm -i nginx-1.14.1-1.el7_4.ngx.src.rpm
+При использовании этой команды с параметром -i, распаковываются src и spec файл: 
+
+rpm -i nginx-1.14.1-1.el7_4.ngx.src.rpm
 
 Переходим в каталог rpmbuild:
 
@@ -47,6 +49,7 @@ make %{?_smp_mflags}
 Копируем наш скомпилированный пакет nginx в папку с будущим репозиторием - cp rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm /usr/share/nginx/html/repo/
 Скачиваем дополнительно пакет - 
 wget http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -O /usr/share/nginx/html/repo/percona-release-0.1-6.noarch.rpm
+
 Создаем репозиторий - 
 createrepo /usr/share/nginx/html/repo/ и createrepo --update /usr/share/nginx/html/repo/
 В location / в файле /etc/nginx/conf.d/default.conf добавим директиву autoindex on. В результате location будет выглядеть так:
