@@ -13,7 +13,7 @@ marozov@iMac-marozov vboxmanage -v
 ```
 CentOS Linux release 7.8 из Vagrant Cloud
 ```
-[vagrant@nfss ~]$ cat /etc/redhat-release
+[vagrant@otuslinux ~]$ cat /etc/redhat-release
 CentOS Linux release 7.8.2003 (Core)
 ```
 
