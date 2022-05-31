@@ -1,6 +1,21 @@
 Управление пакетами. Дистрибьюция софта
 
-Домашнее задание
+Домашнее задание:
+
+Все дальнейшие действия были проверены при использовании
+```
+marozov@iMac-marozov ~ % vagrant -v
+Vagrant 2.2.19
+```
+```
+marozov@iMac-marozov vboxmanage -v
+6.1.32r149290
+```
+CentOS Linux release 7.8 из Vagrant Cloud
+```
+[vagrant@nfss ~]$ cat /etc/redhat-release
+CentOS Linux release 7.8.2003 (Core)
+```
 
 1) создать свой RPM (можно взять свое приложение, либо собрать к примеру апач с определенными опциями)
 2) создать свой репо и разместить там свой RPM
